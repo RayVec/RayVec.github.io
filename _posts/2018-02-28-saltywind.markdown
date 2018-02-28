@@ -1,10 +1,14 @@
 ---
 layout:     post
 title:      "《咸腥的海风》游戏说明"
-subtitle:   ""
-date:       2017-02-28 12:00:00
-author:     "Ray"
-header-img: ""
+subtitle:   "由于游戏包太大在此进行展示"
+date:       2018-02-28
+author:     "RAY"
+header-img: "img/post-bg-os-metro.jpg"
+catalog: true
+tags:
+    - 游戏
+    - RPG
 ---
 
 #一、游戏界面说明：
