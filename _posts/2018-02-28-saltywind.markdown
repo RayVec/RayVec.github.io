@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "《咸腥的海风》游戏说明"
+title:      "咸腥的海风》游戏说明"
 subtitle:   "由于游戏包太大在此进行展示"
 date:       2018-02-28
 author:     "RAY"
