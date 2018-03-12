@@ -25,15 +25,15 @@ tags:
 ## 准备工作
 首先打开fiddler软件，在chrome浏览器中打开[武汉大学图书馆预约官网](http://seat.lib.whu.edu.cn/)。
 
-![Markdown](http://i4.bvimg.com/634149/22d111e4b1ece5b6s.png)
+![Markdown](/img/WHUlib/1.png)
 
 发现有一次的跳转，根据多次练习的经验，直接访问不带后缀的主机时，会获得一个cookie以便进行后来的登录验证和验证码的固定生成，查看16号session
 
-![Markdown](http://i4.bvimg.com/634149/24bfecce5fe34380s.png)
+![Markdown](/img/WHUlib/2.png)
 
 HTTP请求没有含有任何的cookie信息，得到了一个cookie的返回，这个返回的cookie将是进行登录以及以后操作的基础，查看17号session以验证我们的猜想
 
-![Markdown](http://i4.bvimg.com/634149/2a44128f7ecfea79s.png)
+![Markdown](/img/WHUlib/3.png)
 
 可以看到，请求跳转的链接时携带了刚刚获得的cookie，并且返回了登录的界面，由此cookie的获得已经可以确定。
 
@@ -41,7 +41,7 @@ HTTP请求没有含有任何的cookie信息，得到了一个cookie的返回，�
 
 在浏览器中登录成功，查看登录的请求为post方法，携带的数据有username,password,captcha,地址为*/auth/signIn*
 
-![Markdown](http://i4.bvimg.com/634149/d7696639fad52314s.png)
+![Markdown](/img/WHUlib/4.png)
 
 ## 开始模拟
 首先就是基本的Request初始化工作，注意post方法带data即可，不带data的Request就为get方法，post方法主要用于表单的提交和提交数据等，大部分对地址的请求等都为get方法。另外要提的是，request.urlopen方法是一种特殊的opener，如果要获取cookie，那么应该自己构建带cookie的opener，如果不需要cookie，直接使用此方法即可。
@@ -96,9 +96,9 @@ login_res=request.urlopen(login_req)
 
 观察图书馆的主页，发现图书馆直接提供了座位查询的功能，因此点击此功能进行查询，并且用fiddler进行抓包,网页结果以及抓包结果如下。
 
-![Markdown](http://i1.bvimg.com/634149/4b3edde1ca4fa806s.png)
+![Markdown](/img/WHUlib/5.png)
 
-![Markdown](http://i1.bvimg.com/634149/f9db81c2df924da7s.png)
+![Markdown](/img/WHUlib/6.png)
 
 不难发现，采用post方法进行请求，返回的是一个json文件，其中seatStr字段内为可用座位列表的html，每一个li标签的id属性为当前座位的id，而dt标签则是此id对应的房间内的座位号，为了简单，我们提取第一个li标签的座位进行预约即可。
 
@@ -136,7 +136,7 @@ if search_json['seatNum']!=0:
 ## 抓包准备
 自己先尝试进行座位预约，摸清楚各种预约结果所返回的信息。
 
-![Markdown](http://i1.bvimg.com/634149/af2521250a66f498s.png)
+![Markdown](/img/WHUlib/7.png)
 
 发现所有的返回信息都在dd标签内，根据此线索即可进行预约和结果的打印。
 ## 预约工作
