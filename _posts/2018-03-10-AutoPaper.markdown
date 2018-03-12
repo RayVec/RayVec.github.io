@@ -1,15 +1,14 @@
 ---
 layout:     post
 title:      "论文格式化"
-subtitle:   "实验室研究项目的稳定版本"
+subtitle:   "实验室项目的稳定版"
 date:       2018-03-10
 author:     "RAY"
-header-img: "img/contact-bg.jpg"
+header-img: "img/post-bg-ios9-web.jpg"
 catalog: true
 tags:
     - Java
-    - POI
-	- 文档
+    - 文档
 ---
 
 
