@@ -1,0 +1,63 @@
+---
+layout:     post
+title:      "颜趣APP策划"
+subtitle:   "自己完成的一个小想法的策划"
+date:       2018-03-12
+author:     "RAY"
+header-img: "img/post-bg-miui6.jpg"
+catalog: true
+tags:
+    - APP
+    - 产品
+---
+
+
+![Markdown](/img/yanqu/1.jpg)
+
+![Markdown](/img/yanqu/2.jpg)
+
+![Markdown](/img/yanqu/3.jpg)
+
+![Markdown](/img/yanqu/4.jpg)
+
+![Markdown](/img/yanqu/5.jpg)
+
+![Markdown](/img/yanqu/6.jpg)
+
+![Markdown](/img/yanqu/7.jpg)
+
+![Markdown](/img/yanqu/8.jpg)
+
+![Markdown](/img/yanqu/9.jpg)
+
+![Markdown](/img/yanqu/10.jpg)
+
+![Markdown](/img/yanqu/11.jpg)
+
+![Markdown](/img/yanqu/12.jpg)
+
+![Markdown](/img/yanqu/13.jpg)
+
+![Markdown](/img/yanqu/14.jpg)
+
+![Markdown](/img/yanqu/15.jpg)
+
+![Markdown](/img/yanqu/16.jpg)
+
+![Markdown](/img/yanqu/17.jpg)
+
+![Markdown](/img/yanqu/18.jpg)
+
+![Markdown](/img/yanqu/19.jpg)
+
+![Markdown](/img/yanqu/20.jpg)
+
+![Markdown](/img/yanqu/21.jpg)
+
+![Markdown](/img/yanqu/22.jpg)
+
+![Markdown](/img/yanqu/23.jpg)
+
+![Markdown](/img/yanqu/24.jpg)
+
+![Markdown](/img/yanqu/25.jpg)
