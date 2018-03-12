@@ -4,7 +4,7 @@ title:      "颜趣APP策划"
 subtitle:   "自己完成的一个小想法的策划"
 date:       2018-03-12
 author:     "RAY"
-header-img: "img/post-bg-miui6.jpg"
+header-img: "img/post-bg-miui6.JPG"
 catalog: true
 tags:
     - APP
@@ -12,52 +12,52 @@ tags:
 ---
 
 
-![Markdown](/img/yanqu/1.jpg)
+![Markdown](/img/yanqu/1.JPG)
 
-![Markdown](/img/yanqu/2.jpg)
+![Markdown](/img/yanqu/2.JPG)
 
-![Markdown](/img/yanqu/3.jpg)
+![Markdown](/img/yanqu/3.JPG)
 
-![Markdown](/img/yanqu/4.jpg)
+![Markdown](/img/yanqu/4.JPG)
 
-![Markdown](/img/yanqu/5.jpg)
+![Markdown](/img/yanqu/5.JPG)
 
-![Markdown](/img/yanqu/6.jpg)
+![Markdown](/img/yanqu/6.JPG)
 
-![Markdown](/img/yanqu/7.jpg)
+![Markdown](/img/yanqu/7.JPG)
 
-![Markdown](/img/yanqu/8.jpg)
+![Markdown](/img/yanqu/8.JPG)
 
-![Markdown](/img/yanqu/9.jpg)
+![Markdown](/img/yanqu/9.JPG)
 
-![Markdown](/img/yanqu/10.jpg)
+![Markdown](/img/yanqu/10.JPG)
 
-![Markdown](/img/yanqu/11.jpg)
+![Markdown](/img/yanqu/11.JPG)
 
-![Markdown](/img/yanqu/12.jpg)
+![Markdown](/img/yanqu/12.JPG)
 
-![Markdown](/img/yanqu/13.jpg)
+![Markdown](/img/yanqu/13.JPG)
 
-![Markdown](/img/yanqu/14.jpg)
+![Markdown](/img/yanqu/14.JPG)
 
-![Markdown](/img/yanqu/15.jpg)
+![Markdown](/img/yanqu/15.JPG)
 
-![Markdown](/img/yanqu/16.jpg)
+![Markdown](/img/yanqu/16.JPG)
 
-![Markdown](/img/yanqu/17.jpg)
+![Markdown](/img/yanqu/17.JPG)
 
-![Markdown](/img/yanqu/18.jpg)
+![Markdown](/img/yanqu/18.JPG)
 
-![Markdown](/img/yanqu/19.jpg)
+![Markdown](/img/yanqu/19.JPG)
 
-![Markdown](/img/yanqu/20.jpg)
+![Markdown](/img/yanqu/20.JPG)
 
-![Markdown](/img/yanqu/21.jpg)
+![Markdown](/img/yanqu/21.JPG)
 
-![Markdown](/img/yanqu/22.jpg)
+![Markdown](/img/yanqu/22.JPG)
 
-![Markdown](/img/yanqu/23.jpg)
+![Markdown](/img/yanqu/23.JPG)
 
-![Markdown](/img/yanqu/24.jpg)
+![Markdown](/img/yanqu/24.JPG)
 
-![Markdown](/img/yanqu/25.jpg)
+![Markdown](/img/yanqu/25.JPG)
