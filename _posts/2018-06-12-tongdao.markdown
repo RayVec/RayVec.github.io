@@ -13,16 +13,16 @@ tags:
 ---
   
   
-# 产品背景
+# Background
 
 
-大学生在学习生活中经常出现需要组队的场景，无论是完成老师布置的大作业还是参加各种竞赛，都需要合适的队友并肩作战。举个例子，项目经历是大学生简历上非常重要的一项，所以大学生对于竞赛组队的需求是非常大的，传统的组队方式一般是通过自己的人脉找队友，这种方式的弊端是非常明显的，比如一个计算机学院的学生，他认识的人都是本院的同学，可能就很难找到一个优秀的城市设计学院的学生作美工队友。在我们之前，已经有别的团队看到了这个痛点，他们的解决方案是提供一个供需平台，通过发帖子寻找队友，而我们团队创意性的引入了“匹配”来解决这个需求。“匹配”这个概念源于游戏，即游戏系统会自动找到和你水平相近的玩家组成一局游戏，同样的，把游戏替换成竞赛，我们的产品要解决的就是如何找到一个需要美工的程序员和一个需要程序员的美工，当他们同时发出匹配需求时把他们匹配成一个队伍。
+College students often have situations where they need to form a team in their study and life. Whether it is completing major assignments assigned by the teacher or participating in various competitions, they need suitable teammates to fight side by side. For example, project experience is a very important item on college students’ resumes, so college students have a great demand for team formation in competitions. The traditional way of team formation is generally to find teammates through their own contacts. The disadvantages of this method are very great. Obviously, for example, a student of the School of Computer Science, and the people he knows are all classmates of the school, it may be difficult to find an excellent student of the School of Urban Design as an art teammate. Before us, other teams have seen this pain point. Their solution is to provide a supply and demand platform to find teammates by posting posts, and our team creatively introduced "matching" to solve this need. The concept of "matching" originates from the game, that is, the game system will automatically find players who are similar to your level to form a game. Similarly, replace the game with a competition. What our product has to solve is how to find a programmer who needs art. And an artist who needs a programmer, when they send out matching requirements at the same time, match them into a team.
 
 
-# 产品目标
+# Goal
 
 
-针对大学生的组队需求，精确定位，开发出一款方便快捷的APP，为广大学生提供一个供需组队的平台。
+Aiming at the team formation needs of college students, we have developed a convenient and quick APP to provide a platform for the majority of students to form teams.
 
 
 # 产品功能说明
