@@ -1,14 +1,15 @@
 ---
 layout:     post
-title:      "颜趣APP策划"
-subtitle:   "自己完成的一个小想法的策划"
+title:      "YanQu APP Design"
+subtitle:   "A community of memes"
 date:       2018-03-12
 author:     "RAY"
 header-img: "img/post-bg-miui6.jpg"
 catalog: true
 tags:
     - APP
-    - 产品
+    - Community
+    - memes
 ---
 
 
