@@ -1,9 +1,9 @@
 # Site settings
-title: 魏睿
-SEOTitle: 魏睿 | Ray's Space
+title: Rui Wei
+SEOTitle: Rui Wei | Ray's Space
 header-img: img/home-bg.jpg
-email: 892349323@qq.com
-description: "喜  怒  哀  乐  情  愁  痴"
+email: rayvec@foxmail.com
+description: "happy  angry  sad  glad  love  worry  crazy"
 keyword: "魏睿, Ray, Ray, 魏睿的博客,博客, 个人网站, 互联网, Web, JavaScript, 前端, 设计"
 url: "https://RayVec.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
@@ -15,7 +15,7 @@ RSS: false
 weibo_username:     5812524050
 zhihu_username:     weirui-60
 github_username:    RayVec
-#facebook_username:  huxpro
+facebook_username:  huxpro
 # linkedin_username:  firstname-lastname-idxxxx
 
 
@@ -66,7 +66,7 @@ ga_domain: huangxuan.me
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "吃喝玩乐睡，无忧无虑人"
+sidebar-about-description: "walk between technology, business and culture"
 sidebar-avatar: /img/ray.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
