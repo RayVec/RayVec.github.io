@@ -1,14 +1,15 @@
 ---
 layout:     post
-title:      "同道APP"
-subtitle:   "从无到有的一次互联网产品尝试"
+title:      "TongDao APP"
+subtitle:   "An Internet product attempt from scratch"
 date:       2018-06-12
 author:     "RAY"
 header-img: "img/post-bg-android.jpg"
 catalog: true
 tags:
     - APP
-    - 产品
+    - Internet 
+    - Sociality
 ---
   
   
