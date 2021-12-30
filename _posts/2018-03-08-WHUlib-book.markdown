@@ -1,50 +1,53 @@
 ---
 layout:     post
-title:      "武汉大学图书馆预约系统"
-subtitle:   "仅供学习使用"
+title:      "Library Reservation Tool of Wuhan University "
+subtitle:   "For learning only"
 date:       2018-03-08
 author:     "RAY"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
 tags:
-    - 爬虫
+    - web reptile
 ---
 
 
-本篇文章主要分享我最近练习并得到了实践的python3.x爬虫技术，并在学校图书馆做了简单的尝试，能够成功的预约到自己心仪的座位（当然，仅供学习使用，不建议用此脚本投机取巧，破坏预约秩序）。
+This article mainly shares the python3.x crawler technology that I have recently practiced and gotten into practice, and I made a simple attempt in the school library, and I can successfully reserve my favorite seat (of course, it is for learning only, not recommended This script is opportunistic and disrupts the order of appointments).
 
-首先，简单介绍一下我从零开始一点点完成脚本的学习历程。
-> * 使用fiddler从8888端口进行抓包并解析每一个session
-> * http中request的get和post方法，请求headers的内容以及cookie的作用
-> * urllib包中request和response的使用
-> * 使用BeautifulSoup进行HTML网页的解析
-> * python3中datetime使用方法
+First of all, let me briefly introduce my learning process of completing the script from scratch.
+> * Use fiddler to capture packets from port 8888 and parse each session
+> * The get and post methods of request in http, the content of request headers and the role of cookies
+> * The use of request and response in the urllib package
+> * Use BeautifulSoup to parse HTML pages
+> * How to use datetime in python3
 
-这些技术初学还是需要一些时间来掌握，等熟练之后就会发现爬虫就是一种熟能生巧的工作，多多练习会让对各种意外情况的处理更加迅速。下面介绍一下我一步步分析的流程。
-# 模拟登录
-## 准备工作
-首先打开fiddler软件，在chrome浏览器中打开[武汉大学图书馆预约官网](http://seat.lib.whu.edu.cn/)。
+It takes some time to learn these techniques for beginners. After you become proficient, you will find that crawling is a kind of practice that makes perfect. Practicing more will make you deal with various unexpected situations more quickly. Let me introduce the process of my step-by-step analysis.
+
+# Mock login
+## Preparation work
+First open the fiddler software and open it in the chrome browser[Wuhan University Library Reservation Official Website](http://seat.lib.whu.edu.cn/)。
 
 ![Markdown](/img/WHUlib/1.png)
 
-发现有一次的跳转，根据多次练习的经验，直接访问不带后缀的主机时，会获得一个cookie以便进行后来的登录验证和验证码的固定生成，查看16号session
+I found that there was a jump. Based on the experience of many exercises, when you directly access the host without suffix, you will get a cookie for subsequent login verification and verification code generation. Check session 16
+
 
 ![Markdown](/img/WHUlib/2.png)
 
-HTTP请求没有含有任何的cookie信息，得到了一个cookie的返回，这个返回的cookie将是进行登录以及以后操作的基础，查看17号session以验证我们的猜想
+The HTTP request did not contain any cookie information, and a cookie was returned. The returned cookie will be the basis for login and subsequent operations. Check the 17th session to verify our guess
 
 ![Markdown](/img/WHUlib/3.png)
 
-可以看到，请求跳转的链接时携带了刚刚获得的cookie，并且返回了登录的界面，由此cookie的获得已经可以确定。
+It can be seen that the request to redirect the link carried the cookie that was just obtained, and returned to the login interface, so that the cookie has been obtained.
 
-下面在登录界面输入自己的学号和密码，发现一个重要的细节，图书馆的网页登录设置了验证码，这将是爬虫的一个大麻烦，一开始想通过一些API来解决验证码识别的难题来解决，使用了百度ocr识别和谷歌tesseract之后发现效果不太满意，错误率太高，若要更加精确的识别还需要自己进行深度学习神经网络的训练，太过繁琐，为了快些完成爬虫项目，这些进阶工作暂且放下，为此我采取了直接显示验证码图片手动输入的方式。查看验证码的链接为*/simpleCaptcha/captcha*,在fiddler中发现每一次请求验证码地址都携带了初始的cookie，这样验证码不会刷新，这对爬虫来说是一个好消息，验证码的有效时间长可以保证用户输入后绝对有效。
+Next, enter your student ID and password in the login interface, and found an important detail. The library's webpage login has a verification code, which will be a big trouble for crawlers. At first, I wanted to solve the problem of verification code recognition through some APIs. To solve this problem, after using Baidu ocr recognition and Google tesseract, I found that the effect is not satisfactory, and the error rate is too high. If you want more accurate recognition, you need to train your own deep learning neural network, which is too cumbersome, in order to complete the crawler project faster , Put down these advanced tasks for the time being, for this I adopted the method of directly displaying the captcha image and manually inputting it. The link to view the verification code is */simpleCaptcha/captcha*. It is found in fiddler that every time the verification code is requested, the address carries the initial cookie, so that the verification code will not be refreshed. This is good news for crawlers. Long valid time can guarantee absolute validity after user input.
 
-在浏览器中登录成功，查看登录的请求为post方法，携带的数据有username,password,captcha,地址为*/auth/signIn*
+The login is successful in the browser, and the request to view the login is the post method. The data carried are username, password, captcha, and the address is */auth/signIn*
 
 ![Markdown](/img/WHUlib/4.png)
 
-## 开始模拟
-首先就是基本的Request初始化工作，注意post方法带data即可，不带data的Request就为get方法，post方法主要用于表单的提交和提交数据等，大部分对地址的请求等都为get方法。另外要提的是，request.urlopen方法是一种特殊的opener，如果要获取cookie，那么应该自己构建带cookie的opener，如果不需要cookie，直接使用此方法即可。
+## Start simulation
+The first is the basic Request initialization work. Pay attention to the post method with data. Request without data is the get method. The post method is mainly used for form submission and data submission. Most of the requests for the address are the get method. . Another thing to mention is that the request.urlopen method is a special opener. If you want to get a cookie, you should build an opener with a cookie yourself. If you don’t need a cookie, just use this method.
+
 ```python
 index_url = 'http://seat.lib.whu.edu.cn/'
 cookie = cookiejar.CookieJar()
@@ -57,8 +60,10 @@ index_cookie = ''
 for item in cookie:
     index_cookie += item.name + '=' + item.value + ';'
 ```
-上述代码展示了如何从访问主机并且获取index_cookie
-然后是验证码图片的抓取，注意在请求中一定要在headers中加上cookie，这样才能保证此验证码能长时间有效，爬取到的数据只是一堆二进制字符需要进行文件的写入(open方法中'wb'代表写入，'rb'代表读取)，此外还需要用到pillow包（PIL），使用PIL的插件展示图片，以便我们能直接看清验证码。
+
+The above code shows how to get index_cookie from the visiting host
+Then there is the capture of the verification code image. Note that the cookie must be added to the headers in the request to ensure that the verification code is valid for a long time. The crawled data is only a bunch of binary characters that need to be written to the file ( In the open method,'wb' stands for write and'rb' stands for read). In addition, the pillow package (PIL) is also needed, and the PIL plug-in is used to display the picture so that we can directly see the verification code.
+
 ```python
 captcha_url='http://seat.lib.whu.edu.cn/simpleCaptcha/captcha'
 req=request.Request(captcha_url,headers=headers)
@@ -70,7 +75,8 @@ if image:
         print('验证码已经获取')
 image.show()
 ```
-获取到验证码后便可以让用户输入所看到的字符了，登录需要的数据也收集完毕，下面便可使用post方法将数据提交给服务器，让本地的cookie在主机服务器中得到注册长时间有效，根据fiddler查看返回的cookie信息可知，此cookie的有效时间为两个小时。
+After the verification code is obtained, the user can enter the characters they see, and the data required for login is also collected. The data can be submitted to the server using the post method below, so that the local cookie can be registered in the host server for a long time. According to the cookie information returned by fiddler, it can be known that the validity time of this cookie is two hours.
+
 ```python
 headers={
         'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36',
@@ -85,29 +91,31 @@ login_data={
 login_req=request.Request(login_url,parse.urlencode(login_data).encode(),headers)
 login_res=request.urlopen(login_req)
 ```
-上述代码中的headers由于已经注册，便可以长期进行使用了，下面所有的请求的headers都是这个。
+Since the headers in the above code have been registered, they can be used for a long time. All the following request headers are this.
 
-至此已经完成了模拟登录。
-# 查询座位
-## 寻找接口
-介绍一下武汉大学信息部图书馆的座位分布，图书馆一共四层，第一层是讨论区和电脑区，讨论区的座位是圆桌型的，不太适合自习，而由于自己一般都会使用自带的电脑电脑区也基本上没有什么用处，因此第一层pass，从第二层开始每层都有两个自习室，第三层还有一个自主学习区，因此这七个房间的座位就是本次爬虫预约的目标。
+So far, the simulated login has been completed.
 
-刚刚开始进行爬虫编写的时候我的想法是直接寻找预约座位的地址进行预约，从第二层的西房间开始，如果预约失败了那么预约当前房间的下一号座位，直到有满足要求的座位为止，但是实际实践下来由于会进行频繁的预约请求，除去各种形形色色的返回异常不说，图书馆的服务器还会有相应的反爬虫机制封锁掉当前的IP，严重者设置会被封禁学号，因此我调整了我的预约策略，搜索为主，最后的预约请求应该尽量的少。
+# Query seat
+## Find the interface
+Introduce the seat distribution of the Library of the Information Department of Wuhan University. The library has four floors. The first floor is the discussion area and the computer area. The seats in the discussion area are round table-shaped, not suitable for self-study, and because they usually use their own The computer area is basically useless, so on the first floor pass, there are two study rooms on each floor from the second floor, and there is an autonomous study area on the third floor, so the seats in these seven rooms are the original The target of this crawler appointment.
 
-观察图书馆的主页，发现图书馆直接提供了座位查询的功能，因此点击此功能进行查询，并且用fiddler进行抓包,网页结果以及抓包结果如下。
+When I first started writing the crawler, my idea was to directly look for the reserved seat address to make a reservation. Starting from the west room on the second floor, if the reservation fails, then reserve the next seat in the current room until there is a seat that meets the requirements. , But in actual practice, due to frequent reservation requests, apart from all kinds of return exceptions, the library server will also have a corresponding anti-crawler mechanism to block the current IP. In severe cases, the student ID will be blocked. Therefore, I adjusted my appointment strategy to focus on search, and the final appointment request should be as few as possible.
+
+Observing the homepage of the library, I found that the library directly provides the seat query function, so click this function to query and use fiddler to capture the packet. The web page results and the packet capture results are as follows.
 
 ![Markdown](/img/WHUlib/5.png)
 
 ![Markdown](/img/WHUlib/6.png)
 
-不难发现，采用post方法进行请求，返回的是一个json文件，其中seatStr字段内为可用座位列表的html，每一个li标签的id属性为当前座位的id，而dt标签则是此id对应的房间内的座位号，为了简单，我们提取第一个li标签的座位进行预约即可。
+It is not difficult to find that the post method is used to request, and the return is a json file, where the seatStr field is the html of the available seat list, the id attribute of each li tag is the id of the current seat, and the dt tag corresponds to this id For the seat number in the room, for simplicity, we can extract the first seat with the label li and make a reservation.
 
-## 提取出座位id
-下面重要的任务便是如何对json文件和html进行解析以获得最终的座位id以及座位号（方便展示），座位id将是最后进行预约的主要数据。查看此session可以知道需要post的数据有onDate,building（这里只考虑信息学部图书馆，building号为1）,room,hour,startMin,endMin,power(是否需要有电源座位),window（是否靠窗），下面随意设置一些数据进行试验。
+## Extract the seat id
+The next important task is how to parse the json file and html to obtain the final seat id and seat number (for display). The seat id will be the main data for the final reservation. Looking at this session, you can know that the data that needs to be posted are onDate, building (only the library of the Ministry of Information is considered here, the building number is 1), room, hour, startMin, endMin, power (whether a power seat is required), window (whether it is by the window or not) ), set some data at will for experimentation below.
 
-解析json的工具为python自带的json包，使用json.loads即可将json格式的文件转化为python的字典结构。得到字典后首先用seatNum的key得到当前房间查询到的可用座位数，若为0即可开始下一个房间的查询，不为0则查询seatStr得到座位的html。
+The tool for parsing json is the json package that comes with python. Use json.loads to convert json format files into python dictionary structure. After getting the dictionary, first use the key of seatNum to get the number of available seats in the current room. If it is 0, you can start the query of the next room. If it is not 0, query seatStr to get the html of the seat.
 
-得到html后需要使用BeautifulSoup将其转化为一个soup对象，beautifulsoup有几种解析模式，lxml、html.parser、xml等，这里使用html.parser进行解析，得到soup对象后，观察html内容，发现每一个座位都在li标签内，每一个座位的座位号都在dt标签内，因此使用soup.p（p为标签名，返回得到的第一个标签）可以直接得到查询到的第一个座位，再使用.attrs('属性名')即可获得id属性的内容，再用字符串的从后往前截取的方法即可。代码如下：
+After getting the html, you need to use BeautifulSoup to convert it into a soup object. There are several parsing modes for beautifulsoup, such as lxml, html.parser, xml, etc. Here, html.parser is used for parsing. After obtaining the soup object, observe the html content and find each one The seats are all in the li tag, and the seat number of each seat is in the dt tag, so using soup.p (p is the tag name, the first tag is returned) can directly get the first seat that is queried, and then Use .attrs('attribute name') to get the content of the id attribute, and then use the method of intercepting the string from back to front. code show as below:\
+
 ```python
 search_url = 'http://seat.lib.whu.edu.cn/freeBook/ajaxSearch'
 search_data = {
@@ -130,17 +138,18 @@ if search_json['seatNum']!=0:
     seat_id=seat_soup.li.attrs['id'][-4:]
     seat_num=seat_soup.dt.text
 ```
-## 搜索优化
-注意到座位还有靠窗和不靠窗之分，出于自己的一点点私心当然要优先预约靠窗的座位了，因此安排了前后两次查询，先查询靠窗的座位，若没有找到座位则再查询不靠窗的座位，各种循环的结构这里不再贴出了。
-# 座位预定
-## 抓包准备
-自己先尝试进行座位预约，摸清楚各种预约结果所返回的信息。
+## Search optimization
+I noticed that there is a window seat and a non-window seat. For my own selfishness, of course, I have to reserve the window seat first. Therefore, I arranged two queries before and after, first check the window seat, if no seat is found Then check the seats that are not by the window. The structure of various cycles is no longer posted here.
+
+# Seat reservation
+## Capture package preparation
+Try to make a seat reservation by yourself, and find out the information returned by various reservation results.
 
 ![Markdown](/img/WHUlib/7.png)
 
-发现所有的返回信息都在dd标签内，根据此线索即可进行预约和结果的打印。
-## 预约工作
-同样是对预约地址进行post，直接用BeautifulSoup进行解析，使用findAll方法，获得的list进行分别打印即可。当然，预约之前要用此cookie再获取一次验证码。
+It is found that all the returned information is in the dd label, and you can make an appointment and print the result according to this clue.
+## Make an appointment
+The same is to post the reserved address, directly use BeautifulSoup to parse, use the findAll method, and print the obtained list separately. Of course, you need to use this cookie to get the verification code again before making an appointment.
 ```python
 getCaptcha(headers)
 captcha=input('请输入预定验证码')
@@ -160,10 +169,12 @@ for result in results:
         book=True
     print(result.text)
 ```
-这样，基本上预约工作就完成了。
-# 程序改进
 
-基本功能的完成并不就意味着能够完美的符合我们的需求，学校的座位抢座时间一般是在十点半，因此最好能让程序自动在每天十点半时自动运行，这需要用到datetime包里面的方法，使用while无限循环，每一次都获取当前的时间，由于还带有微秒数，因此需要对此时间在十点半和十点半过一秒内进行判断，如果符合则执行上述的程序，注意，这里还需要暂停一秒钟以使得下一次循环到之后必定不会还在当前的范围内，避免多次执行程序，这样就达到了定时执行程序的效果且资源占用很小。
+In this way, the appointment is basically completed.
+
+# Program improvement
+
+The completion of the basic functions does not mean that it can perfectly meet our needs. The seat grab time of the school is usually at half past ten, so it is best to let the program automatically run automatically at half past ten every day, this needs to be used The method in the datetime package uses the while infinite loop to get the current time each time. Because it also contains the number of microseconds, the time needs to be judged within one second between ten thirty and ten thirty, if it meets Execute the above program, note that here you need to pause for one second so that after the next cycle, it will not be in the current range, avoid executing the program multiple times, so that the effect of timing the program is achieved and the resource occupancy is very high. small.
 ```python
 if __name__=='__main__':
     a=input('1、现在运行，2、定时运行（22：30）')
@@ -180,7 +191,7 @@ if __name__=='__main__':
                     function()
                     loop == 0
 ```
-# 总结
-本次爬虫练习基本上涵盖了爬虫所有的主流技术，还有一些python数据结构的运用，掌握之后对今后进行更复杂的结构化爬虫工作奠定了很好的基础。当然还有一些后话，如何运用深度学习的tensorflow框架对爬取的大量类似的验证码图片集进行训练以提高验证码识别精度从而改善程序体验，还有使用代理IP和高斯随机数的暂停来应对当前网站的反爬虫机制，以及分布式爬虫提高爬虫的效率，都是今后可以深入研究的地方。
+# Summarize
+This crawler exercise basically covers all the mainstream technologies of crawler, as well as the application of some python data structures. After mastering it, it will lay a good foundation for more complex structured crawler work in the future. Of course, there are some later words, how to use the deep learning tensorflow framework to train a large number of similar captcha image sets to improve the accuracy of captcha recognition and improve the program experience, as well as the use of proxy IP and Gaussian random numbers to pause. Dealing with the anti-crawling mechanism of the current website, as well as the distributed crawler to improve the efficiency of the crawler, are areas that can be studied in depth in the future.
 
-本项目的[地址](https://github.com/RayVec/WHUlib_Book),欢迎大家前来阅读。
+[Address](https://github.com/RayVec/WHUlib_Book) of this project, welcome everyone to come and read.
