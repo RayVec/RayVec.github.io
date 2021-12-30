@@ -25,100 +25,98 @@ College students often have situations where they need to form a team in their s
 Aiming at the team formation needs of college students, we have developed a convenient and quick APP to provide a platform for the majority of students to form teams.
 
 
-# 产品功能说明
+# Features
 
 
-功能分解成四层的内容：
+The function is broken down into four levels of content:
 
 
-第一层是基本功能，能实现单人的建立圆桌和匹配，实现了圆桌内聊天以及准备和组队的基本功能，并且能对圆桌进行展示。
+The first layer is the basic function, which can realize the establishment of a round table and matching by a single person, realize the basic functions of chatting, preparation and team formation in the round table, and can display the round table.
 
 
-第二层是增加好友功能和多人组队，添加好友，在需求中邀请好友，以及邀请好友后在消息界面的通知，增加圆桌草稿的功能，可以在用户暂时放弃需求撰写和推出一个圆桌时保存。
+The second layer is to increase the friend function and multi-person team, add friends, invite friends in demand, and notify in the message interface after inviting friends, increase the round table draft function, which can be used when the user temporarily gives up the need to write and launch a round table save.
 
 
-第三层是社交功能的完善，涉及好友间私聊，以及增添官方的通知消息，还有好友专属展示界面。
+The third layer is the improvement of social functions, involving private chats between friends, adding official notification messages, and a dedicated display interface for friends.
 
 
-第四层是对圆桌满足组队功能之后进行的交流平台的升级，已经组队的圆桌升级为队伍可以长期交流，相关界面都需要修改。
+The fourth layer is to upgrade the communication platform after the round table meets the team function. The round table that has been formed is upgraded to the team that can communicate for a long time, and the related interfaces need to be modified.
 
 
 
--- 运行环境要求
-     Android 6.0以上
+- Operating environment requirements
+     Android 6.0 and above
 	 
 	 
-# 开发说明
+# Development introduction
 
 
-本次产品开发我们划分了前端小组与后台小组，分工明确有利于项目进度的统筹安排。但是这种分组可能会碰到前端与后台相互等待进度的情况，比如前端页面需要调用的接口后台还没实现，或后台进度过快，不知道前台该需要什么接口参数。对此，我们可以前后端加强沟通，后台先写出假接口为前端进行测试使用。
+In this product development, we divided the front-end team and the back-end team, and the clear division of labor is conducive to the overall arrangement of the project schedule. However, this type of grouping may encounter situations where the front end and the back end are waiting for progress. For example, the interface that the front end page needs to call has not yet been implemented in the background, or the background progress is too fast. I don't know what interface parameters the front end needs. In this regard, we can strengthen communication between the front and back ends, and write out fake interfaces for the front end for testing in the background.	
 	
-	
-# 界面展示
+# Interface
 
 
-## 信息架构图
+## Information design
 
 
 ![Markdown](/img/tongdao/1.png)
  
  
-## 界面说明
+## Every function
 
 
-注册登录
+login
  
 ![Markdown](/img/tongdao/2.png)
 
 
-圆桌首页
+home page
 
 ![Markdown](/img/tongdao/3.png)
 
          
-圆桌详情
+round table detail
 
 ![Markdown](/img/tongdao/4.png)
 
-智能匹配需求
+match demand intelligently
 
 ![Markdown](/img/tongdao/5.png)
       
 	  
-邀请好友同时进入圆桌（或建立需求）
+invite friends to the round table
 
 ![Markdown](/img/tongdao/6.png)
  
  
-智能匹配需求结果
+smartly match demand results
 
 ![Markdown](/img/tongdao/7.png)
  
  
-添加好友
+add friends
 
 ![Markdown](/img/tongdao/8.png)
        
  
-消息首页
+message home page
 
 ![Markdown](/img/tongdao/9.png)
  
  
-聊天界面
+chat interface
 
 ![Markdown](/img/tongdao/10.png)
 
 
-我的模块
+my profile
 
 ![Markdown](/img/tongdao/11.png)
 
 
-# 产品下载地址
+# Download
  
  
-链接：https://pan.baidu.com/s/16WE_jjzzMXMxbjGEoxroeg 密码：lnhd
+URL：https://pan.baidu.com/s/16WE_jjzzMXMxbjGEoxroeg Password：lnhd
 
-
-注：由于连接的是学校服务器，不一定能开启服务，在此表示歉意
+Note: Since it is connected to the school server, the service may not be able to be opened, I apologize here
